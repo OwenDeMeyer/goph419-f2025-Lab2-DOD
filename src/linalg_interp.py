@@ -37,17 +37,16 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
 
-    # --- Validate dimensions ---
-    if A.ndim != 2:
+    if A.ndim != 2: #check dimensions
         raise ValueError("Matrix A must be 2D.")
-    m, n = A.shape
+    m, n = A.shape # assign m to rows and n to columns
     if m != n: #checks if square
         raise ValueError("Matrix A must be square.")
 
-    if b.ndim == 1:
+    if b.ndim == 1: # if 1d treat as vector instead of matrix
         b = b.reshape(-1, 1)  # treat as column vector
 
-    if b.shape[0] != n:
+    if b.shape[0] != n: # Check if the rows match the number of rows/columns in A
         raise ValueError("The number of rows in A must match the number of rows in b.")
 
     # --- Initialize x0 ---
@@ -56,8 +55,8 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     else:
         x0 = np.array(x0, dtype=float)
         if x0.ndim == 1: #checks dimensions
-            x0 = x0.reshape(-1, 1)
-        if x0.shape[0] != n:
+            x0 = x0.reshape(-1, 1) #Converts to column (transposees it)
+        if x0.shape[0] != n: 
             raise ValueError("Initial guess x0 has incompatible dimensions.")
         if x0.shape[1] == 1 and b.shape[1] > 1:
             x = np.tile(x0, (1, b.shape[1]))
