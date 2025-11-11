@@ -1,1 +1,43 @@
+import numpy as np
+import pytest
+from src.lab_02.linalg_interp import gauss_iter_solve
+
+def test_single_rhs_gauss_seidel():
+    A = np.array([[4, 1, 2],
+                  [3, 5, 1],
+                  [1, 1, 3]], dtype=float)
+    b = np.array([4, 7, 3], dtype=float)
+    x_ref = np.linalg.solve(A, b)
+
+    x = gauss_iter_solve(A, b, tol=1e-10, alg='seidel')
+    assert np.allclose(x, x_ref, atol=1e-6)
+
+def test_single_rhs_jacobi():
+    A = np.array([[10, 1, 1],
+                  [2, 10, 1],
+                  [2, 2, 10]], dtype=float)
+    b = np.array([12, 13, 14], dtype=float)
+    x_ref = np.linalg.solve(A, b)
+
+    x = gauss_iter_solve(A, b, tol=1e-10, alg='jacobi')
+    assert np.allclose(x, x_ref, atol=1e-6)
+
+def test_inverse_computation():
+    A = np.array([[4, 2],
+                  [1, 3]], dtype=float)
+    I = np.eye(2)
+    A_inv = gauss_iter_solve(A, I, tol=1e-10, alg='seidel')
+    assert np.allclose(A @ A_inv, np.eye(2), atol=1e-6)
+
+def test_invalid_alg():
+    A = np.eye(2)
+    b = np.ones(2)
+    with pytest.raises(ValueError):
+        gauss_iter_solve(A, b, alg='invalid')
+
+def test_dimension_mismatch():
+    A = np.eye(3)
+    b = np.ones(2)
+    with pytest.raises(ValueError):
+        gauss_iter_solve(A, b)
 
