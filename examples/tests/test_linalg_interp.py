@@ -4,7 +4,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 import numpy as np
 import pytest
-from src.linalg_interp import gauss_iter_solve
+from linalg_interp import gauss_iter_solve
 
 def test_single_rhs_gauss_seidel():
     A = np.array([[4, 1, 2],
