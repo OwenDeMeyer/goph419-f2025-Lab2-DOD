@@ -79,12 +79,12 @@ def gauss_iter_solve(A, b, x0, tol, alg):
 
     L = np.tril(A, -1)
     U = np.triu(A, 1)
-
+       
     for k in range(max_iter):
         x_old = x.copy()
 
         if alg == 'jacobi':
-            x = (b - (L + U) @ x_old) / D[:, None]
+            x = (b - ((L + U) @ x_old)) / D[:, None]
         elif alg == 'seidel':
             for i in range(n):
                 x[i, :] = (b[i, :] - L[i, :] @ x - U[i, :] @ x_old) / D[i]
@@ -97,4 +97,7 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     # If we reach here, we didn't converge
     warnings.warn("Solution did not converge within max iterations.", RuntimeWarning)
     return np.squeeze(x)
+
+
+
 
