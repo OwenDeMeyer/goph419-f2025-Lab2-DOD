@@ -43,5 +43,5 @@ def test_dimension_mismatch():
     A = np.eye(3)
     b = np.ones(2)
     with pytest.raises(ValueError):
-        gauss_iter_solve(A, b, x0, tol=1e-8, alg)
+        gauss_iter_solve(A, b, x0, tol=1e-8, alg='seidel')
 
