@@ -9,8 +9,8 @@ def test_single_rhs_gauss_seidel():
     b = np.array([4, 7, 3], dtype=float)
     x_ref = np.linalg.solve(A, b)
 
-    x = gauss_iter_solve(A, b, tol=1e-10, alg='seidel')
-    assert np.allclose(x, x_ref, atol=1e-6)
+    x = gauss_iter_solve(A, b, tol=1e-8, alg='seidel')
+    assert np.allclose(x, x_ref, atol=1e-8)
 
 def test_single_rhs_jacobi():
     A = np.array([[10, 1, 1],
@@ -19,15 +19,15 @@ def test_single_rhs_jacobi():
     b = np.array([12, 13, 14], dtype=float)
     x_ref = np.linalg.solve(A, b)
 
-    x = gauss_iter_solve(A, b, tol=1e-10, alg='jacobi')
-    assert np.allclose(x, x_ref, atol=1e-6)
+    x = gauss_iter_solve(A, b, tol=1e-8, alg='jacobi')
+    assert np.allclose(x, x_ref, atol=1e-8)
 
 def test_inverse_computation():
     A = np.array([[4, 2],
                   [1, 3]], dtype=float)
     I = np.eye(2)
-    A_inv = gauss_iter_solve(A, I, tol=1e-10, alg='seidel')
-    assert np.allclose(A @ A_inv, np.eye(2), atol=1e-6)
+    A_inv = gauss_iter_solve(A, I, tol=1e-8, alg='seidel')
+    assert np.allclose(A @ A_inv, np.eye(2), atol=1e-8)
 
 def test_invalid_alg():
     A = np.eye(2)
