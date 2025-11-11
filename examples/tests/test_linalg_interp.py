@@ -1,3 +1,4 @@
+# To run tests, while in the main directory, run -> pytest examples/tests/test_linalg_interp.py -v and it shall show all the tests passing. 
 import sys
 import os
 # Add the src directory to Python path
