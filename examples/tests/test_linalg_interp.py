@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from src.lab_02.linalg_interp import gauss_iter_solve
+from src.linalg_interp import gauss_iter_solve
 
 def test_single_rhs_gauss_seidel():
     A = np.array([[4, 1, 2],
