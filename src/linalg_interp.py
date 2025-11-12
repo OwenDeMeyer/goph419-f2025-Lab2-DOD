@@ -107,7 +107,8 @@ def spline_function(xd, yd, order):
 
     if not np.allclose(np.sort(xd), xd):
         raise ValueError("xd must be strictly increasing.") #checks if the sorted version of the array is equal to the non-sorted (must be increasing)
-
+    if not order:
+        order = 3
     if order not in (1, 2, 3):
         raise ValueError("order must be 1, 2, or 3.")
     xmin = xd[0] #sets to first int
