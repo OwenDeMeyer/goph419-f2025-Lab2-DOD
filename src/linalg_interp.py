@@ -135,7 +135,7 @@ def spline_function(xd, yd, order=3):
                 A = np.vstack([xi**2, xi, np.ones_like(xi)]).T #Build vandermond matrix and solve for a,b,c
                 coeff = solve(A, yi)
                 mask = (x >= xi[0]) & (x < xi[2]) if i < n - 3 else (x >= xi[0]) & (x <= xi[2])
-                y[mask] = coeff[0]*x[mask]**2 + coeff[1]*mask + coeff[2] #Evaluate polynomial
+                y[mask] = coeff[0]*x[mask]**2 + coeff[1]*x[mask] + coeff[2] #Evaluate polynomial
             return y
         return f
     elif order == 3:
