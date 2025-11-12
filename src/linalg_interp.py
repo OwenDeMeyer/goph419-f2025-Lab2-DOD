@@ -1,33 +1,20 @@
-# File: src/lab_02/linalg_interp.py
-
 import numpy as np
 import warnings
 
 def gauss_iter_solve(A, b, x0, tol, alg):
     """
-    Solve the linear system A x = b using the Gauss-Seidel or Jacobi iterative method.
-
-    Parameters
-    ----------
-    A : array_like
-        Coefficient matrix (must be square)
-    b : array_like
-        Right-hand-side vector or matrix
-    x0 : array_like, optional
-        Initial guess for the solution. Default is None (uses zeros)
-    tol : float, optional
-        Relative error tolerance for convergence. Default is 1e-8
-    alg : str, optional
-        Iteration algorithm: 'seidel' (default) or 'jacobi'. Case-insensitive.
+    Solve the linear system A x = b using the Gauss-Seidel or Jacobi iterative method
+    A : array_like: Coefficient matrix (must be square)
+    b : array_like: Right-hand-side vector or matrix
+    x0 : array_like, optional: Initial guess for the solution. Default is None (uses zeros)
+    tol : float, optional: Relative error tolerance for convergence. Default is 1e-8
+    alg : str, optional: Iteration algorithm: 'seidel' (default) or 'jacobi'. Case-insensitive.
 
     Returns
-    -------
     x : numpy.ndarray
         Approximate solution with the same shape as b.
 
-    Raises
-    ------
-    ValueError
+    Raises ValueError
         If the dimensions of A, b, or x0 are incompatible or if alg is invalid.
     RuntimeWarning
         If the solution does not converge within the maximum iterations.
@@ -36,7 +23,8 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     # Convert inputs to numpy arrays
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
-
+    if not x0:
+        x0 = 
     if A.ndim != 2: #check dimensions
         raise ValueError("Matrix A must be 2D.")
     m, n = A.shape # assign m to rows and n to columns
@@ -97,6 +85,6 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     warnings.warn("Solution did not converge within max iterations.", RuntimeWarning)
     return np.squeeze(x)
 
-
+def spline_function
 
 
