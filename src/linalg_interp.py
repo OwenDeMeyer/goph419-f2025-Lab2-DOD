@@ -24,7 +24,7 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
     if not x0:
-        x0 = 
+        x0 = None
     if A.ndim != 2: #check dimensions
         raise ValueError("Matrix A must be 2D.")
     m, n = A.shape # assign m to rows and n to columns
@@ -52,7 +52,10 @@ def gauss_iter_solve(A, b, x0, tol, alg):
             x = x0.copy()
         else:
             raise ValueError("Initial guess x0 has incompatible shape with b.")
-
+    if not tol: #if there is no input for tol 
+        tol = 1e-8 
+    if not alg: #if there is no input for alg
+        alg = 'seidel'
     # --- Algorithm selection ---
     alg = alg.strip().lower()
     if alg not in ['seidel', 'jacobi']:
