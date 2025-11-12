@@ -1,6 +1,12 @@
+# To run tests, while in the main directory, run -> pytest examples/tests/test_spline.py -v and it shall show all the tests passing. 
+import sys
+import os
+# Add the src directory to Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
+
 import numpy as np
 import pytest
-from linalg_interp.py import spline_function
+from linalg_interp import spline_function
 
 def test_linear_exact():
     xd = np.linspace(0, 5, 6)
