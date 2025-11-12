@@ -88,7 +88,7 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     warnings.warn("Solution did not converge within max iterations.", RuntimeWarning)
     return np.squeeze(x)
 
-def spline_function(xd, yd, order):
+def spline_function(xd, yd, order=3):
     """
     function that generates a spline function given two vectors x and y of data.
     xd: array_like of float data increasing in value
@@ -107,8 +107,7 @@ def spline_function(xd, yd, order):
 
     if not np.allclose(np.sort(xd), xd):
         raise ValueError("xd must be strictly increasing.") #checks if the sorted version of the array is equal to the non-sorted (must be increasing)
-    if not order:
-        order = 3
+   
     if order not in (1, 2, 3):
         raise ValueError("order must be 1, 2, or 3.")
     xmin = xd[0] #sets to first int
@@ -140,7 +139,7 @@ def spline_function(xd, yd, order):
                 A = np.vstack([xi**2, xi, np.ones_like(xi)]).T #Build vandermond matrix and solve for a,b,c
                 coeff = solve(A, yi)
                 mask = (x >= xi[0]) & (x < xi[2]) if i < n - 3 else (x >= xi[0]) & (x <= xi[2])
-                y[mask] = coeff[0]*[mask]**2 + coeff[1]*mask + coeff[2] #Evaluate polynomial
+                y[mask] = coeff[0]*x[mask]**2 + coeff[1]*mask + coeff[2] #Evaluate polynomial
             return y
         return f
     elif order == 3:
