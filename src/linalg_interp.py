@@ -88,7 +88,7 @@ def gauss_iter_solve(A, b, x0, tol, alg):
     warnings.warn("Solution did not converge within max iterations.", RuntimeWarning)
     return np.squeeze(x)
 
-def spline_function(xd, yd, ord)
+def spline_function(xd, yd, ord):
     """
     function that generates a spline function given two vectors x and y of data.
     xd: array_like of float data increasing in value
