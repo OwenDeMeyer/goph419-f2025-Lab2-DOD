@@ -1,6 +1,6 @@
 import numpy as np
 import warnings
-
+from numpy.linalg import solve
 def gauss_iter_solve(A, b, x0 = None, tol = 1e-8, alg = 'seidel'):
     """
     Solve the linear system A x = b using the Gauss-Seidel or Jacobi iterative method
