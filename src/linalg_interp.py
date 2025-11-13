@@ -114,7 +114,7 @@ def spline_function(xd, yd, order=3):
     if order == 1: #Linear spline
         slopes = np.diff(yd) / h #Rise over Run, results in an array
         def f(x):
-            x = np.asarray(x, dtype=float) #Converts x into array
+            x = np.asarray(x, dtype=float).flatten() #Converts x into array
             if np.any((x < xmin) | (x > xmax)): #Prevents extrapolation outside the data range.
                 raise ValueError(f"Input out of range: xmin={xmin}, xmax={xmax}")
             y = np.empty_like(x, dtype=float) #Create output array
@@ -125,7 +125,7 @@ def spline_function(xd, yd, order=3):
         return f
     elif order == 2: #Quadratic spline 
         def f(x):     
-            x = np.asarray(x)
+            x = np.asarray(x).flatten()
             if np.any(x < xd[0]) or np.any(x > xd[-1]): #Prevents extrapolation outside the data range.
                 raise ValueError(f"x is out of bounds: [{xd[0]}, {xd[-1]}]")
             y = np.empty_like(x, dtype=float) #Create output array
@@ -140,7 +140,7 @@ def spline_function(xd, yd, order=3):
         return f
     elif order == 3:
         def f(x):
-            x = np.asarray(x, dtype=float)
+            x = np.asarray(x, dtype=float).flatten()
             if np.any(x < xd[0]) or np.any(x > xd[-1]): #Prevents extrapolation outside the data range.
                 raise ValueError(f"x is out of bounds: [{xd[0]}, {xd[-1]}]")
             y = np.empty_like(x, dtype=float) #Create output array
