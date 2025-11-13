@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from linalg_interp import spline_function  # adjust path if needed
+from src.linalg_interp import spline_function  
 
 # 1. Load the data from text files
-water_data = np.loadtxt('examples/water_density.txt')  # assuming two columns: temp, density
-air_data = np.loadtxt('examples/air_density.txt')      # assuming two columns: temp, density
+water_data = np.loadtxt('examples/water_density.txt')  # two columns: temp, density
+air_data = np.loadtxt('examples/air_density.txt')      #two columns: temp, density
 
 # Split columns
 temp_water = water_data[:, 0]
