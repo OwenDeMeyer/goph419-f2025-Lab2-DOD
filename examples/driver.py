@@ -1,4 +1,4 @@
-
+#To run this file, make sure you are in the main directory and use the command 'py examples/driver.py' and the plot will show with the results on it. 
 import sys
 import os
 # Add the src directory to Python path
@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(__file__)
 # full paths to your data files
 water_file = os.path.join(BASE_DIR, 'water_density_vs_temp_usgs.txt')
 air_file = os.path.join(BASE_DIR, 'air_density_vs_temp_eng_toolbox.txt')
-# 1. Load the data from text files
+#Load the data from text files
 water_data = np.loadtxt('examples/water_density_vs_temp_usgs.txt')  # two columns: temp, density
 air_data = np.loadtxt('examples/air_density_vs_temp_eng_toolbox.txt')      #two columns: temp, density
 
@@ -22,33 +22,33 @@ dens_water = water_data[:, 1]
 temp_air = air_data[:, 0]
 dens_air = air_data[:, 1]
 
-# 2. Define spline orders
+#Define spline orders
 orders = [1, 2, 3]
 
-# 3. Generate spline functions for water and air
+#Generate spline functions for water and air
 spline_funcs_water = [spline_function(temp_water, dens_water, order=o) for o in orders]
 spline_funcs_air = [spline_function(temp_air, dens_air, order=o) for o in orders]
 
-# 4. Create a fine grid for interpolation (100 equally spaced points)
+#Create a fine grid for interpolation (100 equally spaced points)
 temp_water_fine = np.linspace(temp_water.min(), temp_water.max(), 100)
 temp_air_fine = np.linspace(temp_air.min(), temp_air.max(), 100)
 
-# 5. Prepare plotting
+#Prepare plotting
 fig, axes = plt.subplots(3, 2, figsize=(12, 12))
 fig.suptitle("Water and Air Density Spline Interpolation", fontsize=16)
 
-for i, order in enumerate(orders):
+for i, order in enumerate(orders): # Loop over spline order values and row index
     # Water subplot
     ax_w = axes[i, 0]
-    ax_w.plot(temp_water, dens_water, 'o', label='Data')
-    ax_w.plot(temp_water_fine, spline_funcs_water[i](temp_water_fine), '-', label=f'Order {order} spline')
+    ax_w.plot(temp_water, dens_water, 'o', label='Data') #Plot data points found using text files
+    ax_w.plot(temp_water_fine, spline_funcs_water[i](temp_water_fine), '-', label=f'Order {order} spline') #Interpolate the line graph. 
     ax_w.set_title(f"Water Density, Order {order}")
-    ax_w.set_xlabel("Temperature")
+    ax_w.set_xlabel("Temperature")  # Label x-axis and y-axis.
     ax_w.set_ylabel("Density")
     ax_w.legend()
     ax_w.grid(True)
     
-    # Air subplot
+    # Air subplot/ Repeat steps
     ax_a = axes[i, 1]
     ax_a.plot(temp_air, dens_air, 'o', label='Data')
     ax_a.plot(temp_air_fine, spline_funcs_air[i](temp_air_fine), '-', label=f'Order {order} spline')
@@ -59,13 +59,13 @@ for i, order in enumerate(orders):
     ax_a.grid(True)
     
 
-# 6. Adjust layout
+#Adjust layout
 plt.tight_layout(rect=[0, 0, 1, 0.96])  # leave space for subtitle
 plt.suptitle("Water and Air Density Spline Interpolation", fontsize=18)
 plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.subplots_adjust(hspace=0.35)
 
-# 7. Save the figure
+#Save the figure
 plt.savefig('examples/spline_density_plots.png')
 plt.show()
 
