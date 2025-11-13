@@ -57,9 +57,7 @@ for i, order in enumerate(orders):
     ax_a.set_ylabel("Density")
     ax_a.legend()
     ax_a.grid(True)
-    for ax in axs.flatten():
-        ax.xaxis.set_label_coords(0.5, -0.08)   # default is around -0.1
-
+    
 
 # 6. Adjust layout
 plt.tight_layout(rect=[0, 0, 1, 0.96])  # leave space for subtitle
