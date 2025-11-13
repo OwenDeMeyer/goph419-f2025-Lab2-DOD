@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 from linalg_interp import spline_function  
 
 # 1. Load the data from text files
-water_data = np.loadtxt('water_density.txt')  # two columns: temp, density
-air_data = np.loadtxt('air_density.txt')      #two columns: temp, density
+water_data = np.loadtxt('water_density_vs_temp_usgs.txt')  # two columns: temp, density
+air_data = np.loadtxt('air_density_vs_temp_eng_toolbox.txt')      #two columns: temp, density
 
 # Split columns
 temp_water = water_data[:, 0]
