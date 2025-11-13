@@ -13,8 +13,8 @@ BASE_DIR = os.path.dirname(__file__)
 water_file = os.path.join(BASE_DIR, 'water_density_vs_temp_usgs.txt')
 air_file = os.path.join(BASE_DIR, 'air_density_vs_temp_eng_toolbox.txt')
 # 1. Load the data from text files
-water_data = np.loadtxt('water_density_vs_temp_usgs.txt')  # two columns: temp, density
-air_data = np.loadtxt('air_density_vs_temp_eng_toolbox.txt')      #two columns: temp, density
+water_data = np.loadtxt('examples/water_density_vs_temp_usgs.txt')  # two columns: temp, density
+air_data = np.loadtxt('examples/air_density_vs_temp_eng_toolbox.txt')      #two columns: temp, density
 
 # Split columns
 temp_water = water_data[:, 0]
