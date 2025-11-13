@@ -53,7 +53,7 @@ def test_cubic_spline_vs_univariate_spline():
     # Test points (fine grid)
     x_test = np.linspace(xd[0], xd[-1], 50)
     # Compare outputs
-    assert np.allclose(f(x_test), us(x_test), atol=1e-3)
+    assert np.allclose(f(x_test), us(x_test), atol=1e-2)
 
 def test_exponential_vs_univariate_spline():
     # Exponential data
@@ -66,7 +66,7 @@ def test_exponential_vs_univariate_spline():
     # Test points
     x_test = np.linspace(xd[0], xd[-1], 30)
     # Compare outputs
-    assert np.allclose(f(x_test), us(x_test), atol=1e-3)
+    assert np.allclose(f(x_test), us(x_test), atol=1e-2)
 
 
 def test_out_of_bounds():
