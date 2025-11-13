@@ -114,7 +114,7 @@ def spline_function(xd, yd, order=3):
     if order == 1: #Linear spline
         slopes = np.diff(yd) / h #Rise over Run, results in an array
         def f(x):
-            x = np.asarray(xd, dtype=float) #Converts x into array
+            x = np.asarray(x, dtype=float) #Converts x into array
             if np.any((x < xmin) | (x > xmax)): #Prevents extrapolation outside the data range.
                 raise ValueError(f"Input out of range: xmin={xmin}, xmax={xmax}")
             y = np.empty_like(x, dtype=float) #Create output array
