@@ -1,4 +1,4 @@
-# To run tests, while in the main directory, run -> pytest examples/tests/test_spline.py -v and it shall show all the tests passing. 
+# To run tests, while in the main directory, run -> pytest examples/tests/test_spline.py -v and it shall show all the tests passing, make sure scipy and other packages are downloaded first.
 import sys
 import os
 # Add the src directory to Python path
