@@ -60,6 +60,9 @@ for i, order in enumerate(orders):
 
 # 6. Adjust layout
 plt.tight_layout(rect=[0, 0, 1, 0.96])  # leave space for suptitle
+plt.suptitle("Water and Air Density Spline Interpolation", fontsize=18)
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.subplots_adjust(hspace=0.35)
 
 # 7. Save the figure
 plt.savefig('examples/spline_density_plots.png')
