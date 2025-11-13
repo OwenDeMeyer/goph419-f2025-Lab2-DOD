@@ -1,6 +1,11 @@
+
+import sys
+import os
+# Add the src directory to Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 import numpy as np
 import matplotlib.pyplot as plt
-from src.linalg_interp import spline_function  
+from linalg_interp import spline_function  
 
 # 1. Load the data from text files
 water_data = np.loadtxt('examples/water_density.txt')  # two columns: temp, density
