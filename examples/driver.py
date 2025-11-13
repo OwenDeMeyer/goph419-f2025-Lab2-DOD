@@ -7,8 +7,10 @@ water_data = np.loadtxt('examples/water_density.txt')  # assuming two columns: t
 air_data = np.loadtxt('examples/air_density.txt')      # assuming two columns: temp, density
 
 # Split columns
-temp_water, dens_water = water_data[:, 0], water_data[:, 1]
-temp_air, dens_air = air_data[:, 0], air_data[:, 1]
+temp_water = water_data[:, 0]
+dens_water = water_data[:, 1]
+temp_air = air_data[:, 0]
+dens_air = air_data[:, 1]
 
 # 2. Define spline orders
 orders = [1, 2, 3]
