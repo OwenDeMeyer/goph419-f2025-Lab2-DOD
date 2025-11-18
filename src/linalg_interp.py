@@ -89,7 +89,7 @@ def spline_function(xd, yd, order=3):
     function that generates a spline function given two vectors x and y of data.
     xd: array_like of float data increasing in value
     yd: array_like of float data with the same shape as xd
-    ord: order is an (optional) integer with possible values 1, 2, or 3 (default=3)
+    order: order is an (optional) integer with possible values 1, 2, or 3 (default=3)
     returns: function that takes one parameter (a float or array_like of float) and returns the interpolated y value(s)
     """
     xd = np.asarray(xd, dtype=float).flatten() #convert into array and use flatten to ensure of a 1d vector. 
