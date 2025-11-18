@@ -38,12 +38,12 @@ def gauss_iter_solve(A, b, x0 = None, tol = 1e-8, alg = 'seidel'):
 
     # --- Initialize x0 ---
     if x0 is None:
-        x = np.zeros_like(b)
+        x = np.zeros_like(b) # set to zeroes
     else:
         x0 = np.array(x0, dtype=float)
         if x0.ndim == 1: #checks dimensions
             x0 = x0.reshape(-1, 1) #Converts to column (transposees it)
-        if x0.shape[0] != n: 
+        if x0.shape[0] != n:  #checks if the rows are valid
             raise ValueError("Initial guess x0 has incompatible dimensions.")
         if x0.shape[1] == 1 and b.shape[1] > 1:
             x = np.tile(x0, (1, b.shape[1]))
@@ -53,34 +53,34 @@ def gauss_iter_solve(A, b, x0 = None, tol = 1e-8, alg = 'seidel'):
             raise ValueError("Initial guess x0 has incompatible shape with b.")
     
     # --- Algorithm selection ---
-    alg = alg.strip().lower()
+    alg = alg.strip().lower() #remove spaces and convert to lowercase
     if alg not in ['seidel', 'jacobi']:
         raise ValueError("alg must be either 'seidel' or 'jacobi'.")
 
     # --- Iterative Solver ---
     max_iter = 10000
-    D = np.diag(A)
-    if np.any(D == 0):
+    D = np.diag(A) #diagonal of the matrix A
+    if np.any(D == 0): #check for zeroes in diagonal
         raise ValueError("Matrix A has zero(s) on the diagonal.")
 
-    L = np.tril(A, -1)
-    U = np.triu(A, 1)
+    L = np.tril(A, -1) #set lower triangular matrix
+    U = np.triu(A, 1) #set upper triangualr matrix
        
     for k in range(max_iter):
-        x_old = x.copy()
+        x_old = x.copy() #keep x for final step
 
         if alg == 'jacobi':
-            x = (b - ((L + U) @ x_old)) / D[:, None]
+            x = (b - ((L + U) @ x_old)) / D[:, None] #apply equation
         elif alg == 'seidel':
             for i in range(n):
-                x[i, :] = (b[i, :] - L[i, :] @ x - U[i, :] @ x_old) / D[i]
+                x[i, :] = (b[i, :] - L[i, :] @ x - U[i, :] @ x_old) / D[i] #apply equation
 
-        # --- Convergence Check ---
-        rel_error = np.linalg.norm(x - x_old) / (np.linalg.norm(x) + 1e-15)
+        #Convergence Check
+        rel_error = np.linalg.norm(x - x_old) / (np.linalg.norm(x) + 1e-15) 
         if rel_error < tol:
             return np.squeeze(x)
 
-    # If we reach here, we didn't converge
+    #If we reach here, didn't converge
     warnings.warn("Solution did not converge within max iterations.", RuntimeWarning)
     return np.squeeze(x)
 
