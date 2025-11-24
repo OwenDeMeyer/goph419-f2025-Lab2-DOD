@@ -1,4 +1,4 @@
-# To run tests, while in the main directory, run -> pytest examples/tests.py -v and it shall show all the tests passing. 
+# To run tests, while in the main directory, run -> pytest examples/tests.py -v and it shall show all the tests passing, or use -> py examples/tests.py -v to call the main functio as asked in the lab report.
 import sys
 import os
 # Add the src directory to Python path
