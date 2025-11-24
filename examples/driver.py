@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from linalg_interp import spline_function  
 
 
-def plot_main()
+def plot_main():
     BASE_DIR = os.path.dirname(__file__)
     
     # full paths to your data files
