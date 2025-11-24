@@ -46,3 +46,24 @@ def test_dimension_mismatch():
     with pytest.raises(ValueError):
         gauss_iter_solve(A, b, x0=None, tol=1e-8, alg='seidel') #will raise an error the test passes. 
 
+def main(): 
+    test_single_rhs_gauss_seidel()
+    print("test_single_rhs_gauss_seidel: PASS")
+
+    test_single_rhs_jacobi()
+    print("test_single_rhs_jacobi: PASS")
+
+    test_inverse_computation()
+    print("test_inverse_computation: PASS")
+
+    test_invalid_alg()
+    print("test_invalid_alg: PASS")
+
+    test_dimension_mismatch()
+    print("test_dimension_mismatch: PASS")
+
+    print("\nAll manual tests passed.")
+    
+
+if __name__ == "__main__":
+    main()
