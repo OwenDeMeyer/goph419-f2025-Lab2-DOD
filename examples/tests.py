@@ -119,7 +119,7 @@ def test_dimension_mismatch():
 
 def main(): 
     test_single_rhs_gauss_seidel()
-    print("test_single_rhs_gauss_seidel: PASS")
+    print("test_single_rhs_gauss_seidel: PASS") #No pass message will be displyed if the corresponding test fails, as a error will be raised
 
     test_single_rhs_jacobi()
     print("test_single_rhs_jacobi: PASS")
@@ -134,17 +134,23 @@ def main():
     print("test_dimension_mismatch: PASS")
 
     test_linear_exact()
+    print("test_linear_exact: PASS")
 
     test_quadratic_with_linear_spline()
-
-    test_cubic_with_cubic_spline()
-
-    test_cubic_spline_vs_univariate_spline()
-
-    test_exponential_vs_univariate_spline()
-
-    test_out_of_bounds()
+    print("test_quadratic_with_linear_spline: PASS")
     
+    test_cubic_with_cubic_spline()
+    print("test_cubic_with_cubic_spline: PASS")
+    
+    test_cubic_spline_vs_univariate_spline()
+    print("test_cubic_spline_vs_univariate_spline: PASS")
+    
+    test_exponential_vs_univariate_spline()
+    print("test_exponential_vs_univariate_spline: PASS")
+    
+    test_out_of_bounds()
+    print("test_out_of_bounds: PASS")
+        
     print("\nAll manual tests passed.")
     
 
